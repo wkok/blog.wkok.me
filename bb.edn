@@ -1,0 +1,19 @@
+{:deps {io.github.borkdude/quickblog
+        {:git/sha "3a1d6aff07f692f6e62606317f3d9e981b1df702"}
+        org.babashka/http-server {:mvn/version "0.1.13"}}
+ :tasks
+ {:requires ([quickblog.cli :as cli])
+  :init (def opts {:about-link "https://github.com/wkok"
+                   :blog-author "Werner Kok"
+                   :blog-root "https://blog.wkok.me"
+                   :blog-title "Werner's Blog"
+                   :blog-description "Nomadic adventures, sometimes on two wheels"
+                   :favicon true
+                   :blog-image "assets/blog-image.jpg"
+                   :twitter-handle "wernerkok"
+                   :num-index-posts 10
+                   :page-suffix ""
+                   :skip-archive true
+                   :link-prev-next-posts true})
+  quickblog {:doc "Start blogging quickly! Run `bb quickblog help` for details."
+             :task (cli/dispatch opts)}}}
